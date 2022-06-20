@@ -1,8 +1,9 @@
 package jpabook.jpashop.domain;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Member {
@@ -12,16 +13,11 @@ public class Member {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
-
     private String city;
-    private String street;
-    private String zipcode;
 
-    @OneToMany(mappedBy = "member")
-    private List<Order> orders = new ArrayList<>();
+    private String street;
+
+    private String zipcode; 
 
     public Long getId() {
         return id;
@@ -58,15 +54,4 @@ public class Member {
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-        team.getMembers().add(this);
-    }
-
-    public List<Order> getOrders() { return orders; }
 }
