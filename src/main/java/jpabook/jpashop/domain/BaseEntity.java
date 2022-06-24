@@ -1,8 +1,5 @@
 package jpabook.jpashop.domain;
 
-import org.hibernate.annotations.ColumnDefault;
-
-import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
